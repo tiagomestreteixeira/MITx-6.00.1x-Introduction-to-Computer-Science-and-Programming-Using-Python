@@ -1,4 +1,4 @@
-1. Convert the following code into code that uses a for loop.
+* Convert the following code into code that uses a for loop.
 
 <code>
     prints 2
@@ -10,7 +10,7 @@
 </code>
 
 
-2. Convert the following code into code that uses a for loop.
+* Convert the following code into code that uses a for loop.
 
 <code>
 prints "Hello!"
@@ -22,7 +22,7 @@ prints 2
 </code>
 
 
-3. Write a for loop that sums the values 1 through end, inclusive. end is a variable that we define for you. So, for example, if we define end to be 6, your code should print out the result:
+* Write a for loop that sums the values 1 through end, inclusive. end is a variable that we define for you. So, for example, if we define end to be 6, your code should print out the result:
 
 <code>21</cpde>
 
