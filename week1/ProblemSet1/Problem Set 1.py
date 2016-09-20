@@ -18,22 +18,17 @@ for idx in range(len(s)):
 print("Number of times bob occurs is:", num_bobs)
 
 # Problem 3
-s = 'azcbobobegghakl'
+s = 'pnlongblzgwhsoitwctw'
 
-longest_substring = ""
-if len(s) == 1:
-    print("Longest substring in alphabetical order is:", s)
-
+longest_substring = s[0]
 for idx in range(len(s)):
-    for idy in range(idx, len(s)):
-        print(idy)
-        aux_longest_substring = ""
-        if idy > 0:
-            if s[idy] > s[idy - 1]:
-                aux_longest_substring += s[idy]
-            else:
-                if len(longest_substring) < len(aux_longest_substring):
-                    longest_substring = aux_longest_substring
-                    break
+    aux_longest_substring = s[idx]
+    for idy in range(idx + 1, len(s)):
+        if s[idy] >= s[idy - 1]:
+            aux_longest_substring += s[idy]
+            if len(longest_substring) < len(aux_longest_substring):
+                longest_substring = aux_longest_substring
+        else:
+            break
 
 print("Longest substring in alphabetical order is:", longest_substring)
