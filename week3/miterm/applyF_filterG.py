@@ -12,8 +12,8 @@ def applyF_filterG(L, f, g):
     if len(L) == 0:
         return -1
 
-    l_temp = L[:]
-    for i in l_temp:
+    l_copy = L[:]
+    for i in l_copy:
         if not g(f(i)):
             L.remove(i)
 
