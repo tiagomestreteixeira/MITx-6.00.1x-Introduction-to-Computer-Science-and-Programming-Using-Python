@@ -1,3 +1,6 @@
+from numba import jit
+
+
 # Problem 1
 
 s = 'dgrgaxwupkxokiolhai'
