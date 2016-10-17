@@ -1,7 +1,6 @@
 # The 6.00 Word Game
 
 import random
-import string
 
 VOWELS = 'aeiou'
 CONSONANTS = 'bcdfghjklmnpqrstvwxyz'
@@ -282,7 +281,6 @@ def playGame(wordList):
             return
         else:
             print("Invalid command.")
-
 
 #
 # Build data structures used for entire session and play game
