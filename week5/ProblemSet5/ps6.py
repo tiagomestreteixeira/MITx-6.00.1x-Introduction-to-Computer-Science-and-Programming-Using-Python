@@ -248,6 +248,12 @@ class CiphertextMessage(Message):
         return max_shift
 
 
+def decrypt_story():
+    crypted_text = get_story_string()
+    ciphertext = CiphertextMessage(crypted_text)
+    return ciphertext.decrypt_message()
+
+
 # Example test case (PlaintextMessage)
 plaintext = PlaintextMessage('hello', 2)
 print('Expected Output: jgnnq')
