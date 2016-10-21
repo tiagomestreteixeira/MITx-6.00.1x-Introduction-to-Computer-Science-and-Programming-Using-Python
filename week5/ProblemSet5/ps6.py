@@ -1,7 +1,6 @@
 import string
 
 
-### DO NOT MODIFY THIS FUNCTION ###
 def load_words(file_name):
     """
     file_name (string): the name of the file containing
@@ -24,7 +23,6 @@ def load_words(file_name):
     return word_list
 
 
-### DO NOT MODIFY THIS FUNCTION ###
 def is_word(word_list, word):
     """
     Determines if word is a valid word, ignoring
@@ -36,9 +34,9 @@ def is_word(word_list, word):
     Returns: True if word is in word_list, False otherwise
 
     Example:
-    >>> is_word(word_list, 'bat') returns
+    # >>> is_word(word_list, 'bat') returns
     True
-    >>> is_word(word_list, 'asdf') returns
+    # >>> is_word(word_list, 'asdf') returns
     False
     """
     word = word.lower()
@@ -46,7 +44,6 @@ def is_word(word_list, word):
     return word in word_list
 
 
-### DO NOT MODIFY THIS FUNCTION ###
 def get_story_string():
     """
     Returns: a joke in encrypted text.
@@ -61,7 +58,6 @@ WORDLIST_FILENAME = 'words.txt'
 
 
 class Message(object):
-    ### DO NOT MODIFY THIS METHOD ###
     def __init__(self, text):
         """
         Initializes a Message object
@@ -75,7 +71,6 @@ class Message(object):
         self.message_text = text
         self.valid_words = load_words(WORDLIST_FILENAME)
 
-    ### DO NOT MODIFY THIS METHOD ###
     def get_message_text(self):
         """
         Used to safely access self.message_text outside of the class
@@ -84,7 +79,6 @@ class Message(object):
         """
         return self.message_text
 
-    ### DO NOT MODIFY THIS METHOD ###
     def get_valid_words(self):
         """
         Used to safely access a copy of self.valid_words outside of the class
@@ -158,9 +152,6 @@ class PlaintextMessage(Message):
             self.shift (integer, determined by input shift)
             self.encrypting_dict (dictionary, built using shift)
             self.message_text_encrypted (string, created using shift)
-
-        Hint: consider using the parent class constructor so less
-        code is repeated
         """
         Message.__init__(self, text)
         self.shift = shift
@@ -207,6 +198,7 @@ class PlaintextMessage(Message):
         self.encrypting_dict = self.build_shift_dict(shift)
         self.message_text_encrypted = self.apply_shift(shift)
 
+
 class CiphertextMessage(Message):
     def __init__(self, text):
         """
@@ -218,7 +210,8 @@ class CiphertextMessage(Message):
             self.message_text (string, determined by input text)
             self.valid_words (list, determined using helper function load_words)
         """
-        pass  # delete this line and replace with your code here
+        Message.__init__(self, text)
+        self.valid_words = load_words(WORDLIST_FILENAME)
 
     def decrypt_message(self):
         """
@@ -236,7 +229,23 @@ class CiphertextMessage(Message):
         Returns: a tuple of the best shift value used to decrypt the message
         and the decrypted message text using that shift value
         """
-        pass  # delete this line and replace with your code here
+        word_list = load_words(WORDLIST_FILENAME)
+        shift = 0
+        total = 0
+        max_shift = (0, 0)
+        while shift < 26:
+            current_total = 0
+            decrypted_msg = self.apply_shift(-shift)
+            crypted_words = decrypted_msg.split()
+            for word in crypted_words:
+                if is_word(word_list, word):
+                    current_total += 1
+
+            if current_total > total:
+                total = current_total
+                max_shift = (26 - shift, decrypted_msg)
+            shift += 1
+        return max_shift
 
 
 # Example test case (PlaintextMessage)
@@ -245,11 +254,13 @@ print('Expected Output: jgnnq')
 print('Actual Output:', plaintext.get_message_text_encrypted())
 
 # Example test case (CiphertextMessage)
-ciphertext = CiphertextMessage('jgnnq')
-print('Expected Output:', (24, 'hello'))
-print('Actual Output:', ciphertext.decrypt_message())
+# ciphertext = CiphertextMessage('jgnnq jg,jg')
+# print('Expected Output:', (24, 'hello he,he'))
+# print('Actual Output:', ciphertext.decrypt_message())
 
 msg = Message(string.ascii_lowercase)
 
 print(string.ascii_lowercase)
-print(msg.apply_shift(3))
+a = msg.apply_shift(3)
+print(a)
+print(msg.apply_shift(0))
