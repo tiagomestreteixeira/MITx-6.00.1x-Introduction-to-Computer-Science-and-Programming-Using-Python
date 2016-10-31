@@ -17,8 +17,7 @@ def longest_run(L):
     Returns the sum of the longest run.
     """
     greater_sequence_number = 1
-    start_idx, end_idx, current_idx = 0, 0, 0
-    sprint_idx = 0
+    start_idx, end_idx, current_idx, sprint_idx = 0, 0, 0, 0
     lenght_list = len(L)
     while current_idx < (lenght_list - 1):
         current_idx = sprint_idx
